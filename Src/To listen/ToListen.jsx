@@ -1,12 +1,17 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ToListen.css"
 
 export default function ToListen() {
 
+    const listaLocalStorage = localStorage.getItem("Lista");
     const [atividade, setAtividade] = useState("");
-    const [lista, setLista] = useState([]);
+    const [lista, setLista] = useState(listaLocalStorage || []);
     const [id, setId] = useState(1);
+
+    useEffect(() => {localStorage.setItem ("Lista", JSON.stringify(lista)) },[lista]);
+    
     
     const salvar = (e) => {
         e.preventDefault();
