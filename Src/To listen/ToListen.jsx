@@ -3,22 +3,11 @@ import "./ToListen.css"
 
 export default function ToListen() {
     const listaLocalStorage = JSON.parse(localStorage.getItem("Lista"));
-    const [count, setCount] = useState(0);
     const [atividade, setAtividade] = useState("");
     const [lista, setLista] = useState(listaLocalStorage || []);
-    const [id, setId] = useState(1);
-    document.title = `Lista k-pop`
+    const [id, setId] = useState(listaLocalStorage[listaLocalStorage.length - 1]?.id + 1 || 1);
 
-    useEffect(() => {
-     localStorage.setItem ("Lista", JSON.stringify(lista)) ;
-    if(count <= 0) {
-        documento.title = `LISTA K-POP`;
-    } else if (count == 1) {
-        document.title = `SUA LISTA TEM ${count} MUSICAS`;
-    } else if (count > 1){
-        document.title = `SUA LISTA TEM ${count} MUSICAS`;
-    }
-}, [lista, count]);
+    useEffect(() => {localStorage.setItem ("Lista", JSON.stringify(lista)) }, [lista]);
     
     const salvar = (e) => {
         e.preventDefault();
@@ -28,12 +17,10 @@ export default function ToListen() {
         }]);
         setId(id + 1);
         setAtividade("");
-        setCount(count + 1);
     };
 
     const remover = (id) => {
         setLista(lista.filter((ativ) => ativ.id !== id));
-        setCount(count - 1);
     }
 
     return(
