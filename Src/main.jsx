@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Detalhe from './Detalhe/Detalhe.jsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import Detalhe from './Detalhe/Detalhe';
 
 import {Routes,Route, BrowserRouter} from "react-router-dom";
 
