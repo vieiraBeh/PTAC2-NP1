@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./ToListen.css"
+import { Link } from "react-router-dom";
 
 export default function ToListen() {
     const listaLocalStorage = JSON.parse(localStorage.getItem("Lista"));
@@ -34,6 +35,10 @@ export default function ToListen() {
             </form>
             {lista.map((ativ) => 
               <ul key = {ativ.id}>
+
+                <Link to ={ `/Detalhe/${ativ.id}`}>
+                    <p>{ativ.atividade}</p>
+                </Link>
                 <li>
                     <p>{ativ.atividade}</p>
                     <button onClick={() => remover(ativ.id)}>REMOVE</button>
