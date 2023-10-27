@@ -1,17 +1,24 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "./ToListen.css"
 
 export default function ToListen() {
-
-    const listaLocalStorage = localStorage.getItem("Lista");
+    const listaLocalStorage = JSON.parse(localStorage.getItem("Lista"));
+    const [count, setCount] = useState(0);
     const [atividade, setAtividade] = useState("");
     const [lista, setLista] = useState(listaLocalStorage || []);
     const [id, setId] = useState(1);
+    document.title = `Lista k-pop`
 
-    useEffect(() => {localStorage.setItem ("Lista", JSON.stringify(lista)) },[lista]);
-    
+    useEffect(() => {
+     localStorage.setItem ("Lista", JSON.stringify(lista)) ;
+    if(count <= 0) {
+        documento.title = `LISTA K-POP`;
+    } else if (count == 1) {
+        document.title = `SUA LISTA TEM ${count} MUSICAS`;
+    } else if (count > 1){
+        document.title = `SUA LISTA TEM ${count} MUSICAS`;
+    }
+}, [lista, count]);
     
     const salvar = (e) => {
         e.preventDefault();
@@ -21,20 +28,16 @@ export default function ToListen() {
         }]);
         setId(id + 1);
         setAtividade("");
+        setCount(count + 1);
     };
 
     const remover = (id) => {
-        const auxLista = [];
-        lista.map((lista) => {
-            if (lista.id !== id) {
-                auxLista.push(lista);
-            }
-        });
-        setLista(auxLista);
+        setLista(lista.filter((ativ) => ativ.id !== id));
+        setCount(count - 1);
     }
 
     return(
-        <div class = "container">
+        <div className = "container">
             <h1>Lista de Musicas Ver. Kpop</h1>
             <form onSubmit = {salvar}>
                 <input type ="text"
@@ -43,7 +46,7 @@ export default function ToListen() {
                     <button>ADD</button>
             </form>
             {lista.map((ativ) => 
-            <ul key = {ativ.id}>
+              <ul key = {ativ.id}>
                 <li>
                     <p>{ativ.atividade}</p>
                     <button onClick={() => remover(ativ.id)}>REMOVE</button>
