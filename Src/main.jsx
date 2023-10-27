@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import Detalhe from './Detalhe/Detalhe.jsx'
 
 import {Routes,Route, BrowserRouter} from "react-router-dom";
 
@@ -10,6 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <BrowserRouter>
         <Routes>
             <Route path = '/' element = {<ToListen />}></Route>
+            <Route path = '/detalhe/:id' element = {<Detalhe />}></Route>
         </Routes>
         </BrowserRouter>
     </React.StrictMode>
