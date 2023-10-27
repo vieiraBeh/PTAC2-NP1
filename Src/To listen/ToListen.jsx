@@ -40,7 +40,6 @@ export default function ToListen() {
                     <p>{ativ.atividade}</p>
                 </Link>
                 <li>
-                    <p>{ativ.atividade}</p>
                     <button onClick={() => remover(ativ.id)}>REMOVE</button>
                 </li>
             </ul>
