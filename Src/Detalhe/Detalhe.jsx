@@ -5,7 +5,7 @@ export default function Detalhe(){
     
     return(
     <div>
-        <h1>OLÁ</h1>
+        <h1>{ id }</h1>
     </div>
    );
 }
