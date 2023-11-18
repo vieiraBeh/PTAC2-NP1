@@ -1,5 +1,5 @@
 body{
-    background-image: url(skz3.jpeg);
+    background-image: url(skz7.jpeg);
     background-position: relative;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -10,10 +10,10 @@ body{
 .container {
     max-width: 500px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.438);
+    background-color: rgba(83, 78, 78, 0.438);
     padding: 20px;
 }
 
 h1{
-    color: white;
+    color: rgb(53, 48, 48);
 }
